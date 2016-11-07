@@ -1,4 +1,4 @@
-#Draw a square
+#Ein Quadrat
 go(60)
 turn(90)
 go(60)
@@ -6,6 +6,21 @@ turn(90)
 go(60)
 turn(90)
 go(60)
+
+#Ein Haus mit Dach
+go(50)
+turn(45)
+go(35.35)
+turn(90)
+go(35.35)
+turn(45)
+go(50)
+turn(90)
+go(50)
+turn(90)
+go(50)
+turn(90)
+go(50)
 
 #Sechseck zeichnen
 for i in range(6):

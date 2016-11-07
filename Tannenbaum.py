@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #Tannenbaum Python
-anzahl_max = 7
+anzahl_max = 9
 #Zeilen des Tannebaums
 for i in range (0,anzahl_max):
     reihe=""
