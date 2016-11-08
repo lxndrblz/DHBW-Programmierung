@@ -10,6 +10,7 @@ def euklid(a,b):
 def setZaehler(a):
     global Zaehler
     Zaehler = 10
+
 setZaehler(10)
 print euklid(Zaehler,2)
 
