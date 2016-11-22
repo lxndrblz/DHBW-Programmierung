@@ -12,13 +12,16 @@ def is_palindrom(s):
     return reverse == s
 print(is_palindrom("OttO"))
 #Schreiben Sie ein Programm, das bestimmt, wie oft ein bestimmter String in einem anderen vorkommt, beispielsweise kommt "ei" 2x in "Kleingeist" vor.
+def PatternInString(s, pattern):
+    Anzahl = 0
+    for i in range(0, len(s),2):
+        if s[i:(i+2)] == pattern:
+            Anzahl+=1
+    return Anzahl
+
 s = "Kleingeist"
 pattern = "ei"
-Anzahl = 0
-for i in range(0, len(s),2):
-    if s[i:(i+2)] == pattern:
-        Anzahl+=1
-print(Anzahl)
+print(PatternInString(s, pattern))
 # In dieser Aufgabe geht es darum, einen String (etwa einen Satz) in einzelne Wörter zu zerlegen. Gehen Sie davon aus, dass sich zwischen zwei Wörtern immer ein Leerzeichen befindet. Als Beispiel nehmen wir String s = „Das ist ein kurzer aber schöner Satz“;
 # Schreiben Sie eine Funktion count_words(s), die die Anzahl der Wörter im übergebenen String zurückliefert (im Beispiel 7) und testen Sie diese.
 # Erweitern Sie Ihr Programm so, dass die einzelnen Wörter jeweils in einer Zeile ausgegeben werden, im Beispiel also:
@@ -44,6 +47,7 @@ tokenize("Das ist ein kurzer aber schöner Satz")
 
 # Schreiben Sie eine Funktion encode(s), die einen String (der der Einfachheit halber nur aus Großbuchstaben besteht) mit RLE komprimiert.
 # Schreiben Sie eine Funktion decode(s), die einen RLE-komprimierten String wieder in die ursprüngliche Darstelluung umwandelt.def encode(s):
+def encode(s):
     previous = ''
     length = 0
     output = ''

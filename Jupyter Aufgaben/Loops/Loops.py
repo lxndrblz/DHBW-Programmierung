@@ -53,8 +53,9 @@ while (ende >=0):
 print(summe)
 
 #Schreiben Sie ein Programm, das mit einer while-Schleife die folgende Ausgabe erzeugt:
+ende = 10
 index = 0
-while index <= 10:
+while index <= ende:
     print(index)
     index+=2
 print("Ende !")
