@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 import string
 import random
+import itertools
 from random import randint
+
+
 def hashthis(s):
     h = 0
     base = 1
@@ -11,20 +14,31 @@ def hashthis(s):
         base *= 26
     return h
 
-def bruteforcel(h):
+
+def bruteforcelinear(h):
+
+    # Buchstaben in array umwandeln
     buchstaben = string.ascii_lowercase
-    
-    while True:
+    buchstabenarray = []
+    for char in buchstaben:
+        buchstabenarray.append(char)
+
+    password = ''
+    cartesianproduct = []
+    # Anzahl an Stellen
+    maxstellen = 5
+        # ArgumentListe für cartesisches Produkt erzeugen
+    for i in range(0, maxstellen):
+        cartesianproduct.append(buchstabenarray)
+
+    for pwcombinations in itertools.product(*cartesianproduct):
+        # Jede Kombination prüfen
+        for c in pwcombinations:
+            password = password + str(c)
+            if h == hashthis(password):
+                return password
         password = ''
-        #Zufaellige Länge
-        for i in range(10):
-            #Zufaellige Buchstaben
-            for b in buchstaben:
-                
-                password = password + str(b)
-                if(h == hashthis(password)):
-                    break
-    return password
+
 
 def bruteforce(h):
     buchstaben = string.ascii_lowercase
@@ -36,12 +50,13 @@ def bruteforce(h):
             #Zufaellige Buchstaben
             
             c = random.choice(buchstaben)
-            password = password + c  
+            password = password + c
         if(h == hashthis(password)):
             break
     return password
 hashwert =hashthis(str(raw_input("Ihr Passwort: ")))
 print "Hash Wert: " + str(hashwert)
-print "Passwort war: " + bruteforcel(hashwert)
+print "Passwort war (zufall) verfahren " + str(bruteforce(hashwert))
+print "Passwort war (linear) verfahren " + str(bruteforcelinear(hashwert))
 
 
