@@ -14,7 +14,7 @@ def hashthis(s):
         base *= 26
     return h
 
-#Funktion generiert Passwort mittels eines kartesischen Produktes aus dem Buchstabenarray
+
 def bruteforcelinear(h):
 
     # Buchstaben in array umwandeln
@@ -27,7 +27,7 @@ def bruteforcelinear(h):
     cartesianproduct = []
     # Anzahl an Stellen
     maxstellen = 5
-    # ArgumentListe für cartesisches Produkt erzeugen
+        # ArgumentListe für cartesisches Produkt erzeugen
     for i in range(0, maxstellen):
         cartesianproduct.append(buchstabenarray)
 
@@ -39,7 +39,7 @@ def bruteforcelinear(h):
                 return password
         password = ''
 
-#Funktion generiert Passwort aus zufälligen Kombinationen
+
 def bruteforce(h):
     buchstaben = string.ascii_lowercase
     
@@ -54,7 +54,6 @@ def bruteforce(h):
         if(h == hashthis(password)):
             break
     return password
-
 hashwert =hashthis(str(raw_input("Ihr Passwort: ")))
 print "Hash Wert: " + str(hashwert)
 print "Passwort war (zufall) verfahren " + str(bruteforce(hashwert))
