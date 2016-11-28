@@ -1,3 +1,4 @@
+#encoding=utf-8
 #Erstellen Sie ein Programm, das einen String "rückwärts" ausgibt, also den letzten Buchstaben zuerst, dann den zweitletzten usw.
 def backwards(s):
     for i in range(len(s)-1, -1, -1):
@@ -46,7 +47,8 @@ print(count_words("Das ist ein kurzer aber schöner Satz"))
 tokenize("Das ist ein kurzer aber schöner Satz")
 
 # Schreiben Sie eine Funktion encode(s), die einen String (der der Einfachheit halber nur aus Großbuchstaben besteht) mit RLE komprimiert.
-# Schreiben Sie eine Funktion decode(s), die einen RLE-komprimierten String wieder in die ursprüngliche Darstelluung umwandelt.def encode(s):
+
+
 def encode(s):
     previous = ''
     length = 0
@@ -61,20 +63,24 @@ def encode(s):
         previous = c
     #Ansonsten wird lezter Block ignoriert.
     return output + str(length) + previous
+
+# Schreiben Sie eine Funktion decode(s), die einen RLE-komprimierten String wieder in die ursprüngliche Darstelluung umwandelt.def encode(s):
+
+
 def decode(s):
     output = ''
     numberstr =  ''
     for c in s:
-        if (c.isdigit()):
+        if c.isdigit():
             numberstr = numberstr + c
         else:
-            
-            for i in range(int(numberstr)):
-                output = output + c
+            output += c * int(numberstr)
             numberstr = ''
     return output
 print(encode("AAAAAAAAAABBBBBCCCCCCCCCCGXX"))
 print(decode("5A5B10C4A5F1G"))
+
+
 #Schreiben Sie ein Programm, das die ersten zehn Look And Say Zahlen berechnet
 def say(s):
     
@@ -84,10 +90,10 @@ def say(s):
     if len(s) == 1:
         return '11'
     #Eins weiter zählen
-    s = s +' '
+    s += ' '
     for i in range(1, len(s)):
             #Zeichen gleich vorherigem?
-            if(s[i] != s[i-1]):
+            if s[i] != s[i-1]:
                 output = output + str(count) + s[i-1]
                 count = 1
             else:
@@ -99,12 +105,17 @@ for i in range(10):
     s = say(s)
     print(s)
 
-# Schreiben Sie eine Funktion read_term(term) , die einen als String übergebenen arithmetischen Ausdruck "vorliest", also aus 1*2/3-5 den String "eins mal zwei durch drei minus fünf" macht. Beschränken Sie sich zunächst auf einstellige Zahlen, also die von 0 bis 9.
-# Erweitern Sie die Funktion so, dass auch Zahlen größer als 9 richtig umgewandelt werden.
+# Schreiben Sie eine Funktion read_term(term) , die einen als String übergebenen arithmetischen Ausdruck "vorliest",
+# also aus 1*2/3-5 den String "eins mal zwei durch drei minus fünf" macht. Beschränken Sie sich zunächst auf
+# einstellige Zahlen, also die von 0 bis 9. Erweitern Sie die Funktion so, dass auch Zahlen größer als 9 richtig
+# umgewandelt werden.
+
 
 def get_word(index):
     zahlen = ['','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun']
     return zahlen[index]
+
+
 def get_operator(s):
     if s == "*":
         return " mal "
@@ -114,6 +125,8 @@ def get_operator(s):
         return " minus "
     elif s == "+":
         return " plus "
+
+
 def read_term(term):
     output = ''
     for t in term:

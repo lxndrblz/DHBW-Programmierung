@@ -7,7 +7,8 @@ def lookandsay(s):
     val = s[0]
     for c in s[1:]:
         # Zeichen ungleich vorherigem
-        if (c != val):
+        if c != val:
+            #Look expression
             look = look + str(count) + val
             count = 1
             val = c
