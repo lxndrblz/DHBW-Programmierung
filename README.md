@@ -1,7 +1,7 @@
 # DHBW-Programmierung
 **Hinweis**
 
-Dies sind **keine** offiziellen Lösungen aus dem Kurs _Programmierung_ an der DHBW.  Alle hier gezeigten Lösungen sind selbst erarbeitet und sollen als Inspiration für die Lösung einfacher Problemstellungen in Python dienen. 
+Dies sind **keine** offiziellen Lösungen aus dem Kurs _Programmierung_ an der DHBW.  Alle hier gezeigten Lösungen sind selbst erarbeitet und sollen als Inspiration für die Lösung einfacher Problemstellungen in Python dienen.
 
 Dieses Repository enthält alle Programmierübungen aus dem 1. Semester Programmieren in Python an der DHBW Heidenheim. Ein Teil der Lösungen —wie die zu den Aufgabenstellungen aus dem Moodle LMS— sind noch Python 2.(x),  diese können aber auch relativ leicht auf Python 3.(x) angepasst werden.
 
@@ -33,5 +33,4 @@ Anschließend kann die Funktion kann wie folgt aufgerufen werden:
 `maximum(5,9)`
 
 Es sollte folgende Ausgabe erscheinen:
-`9`
- 
+`9` :tada:
