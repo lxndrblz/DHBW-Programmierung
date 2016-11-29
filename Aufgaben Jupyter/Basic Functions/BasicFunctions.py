@@ -1,3 +1,4 @@
+#encoding=utf-8
 #Schreiben Sie die Funktion maximum(a,b), die den größeren der beiden Werte zurück liefert.
 def maximum(a,b):
     if(a>b):
@@ -27,6 +28,15 @@ def fakultaet(n):
     else:
         return n*fakultaet(n-1)
 print(fakultaet(5))
+#Fakultät ohne Rekursion
+def fak(n):
+    summe = n
+    while n > 1:
+       summe = summe * (n-1)
+       n -= 1
+    return summe
+print(fak(5))
+
 #Schreiben Sie ein Programm, das diese Folge berechnet und dabei die (rekursive) Funktion fib(n) implementiert.
 def fib(n):
     if n == 0:
