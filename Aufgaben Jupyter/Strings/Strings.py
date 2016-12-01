@@ -15,7 +15,7 @@ print(is_palindrom("OttO"))
 #Schreiben Sie ein Programm, das bestimmt, wie oft ein bestimmter String in einem anderen vorkommt, beispielsweise kommt "ei" 2x in "Kleingeist" vor.
 def PatternInString(s, pattern):
     Anzahl = 0
-    for i in range(0, len(s),2):
+    for i in range(0, len(s)):
         if s[i:(i+2)] == pattern:
             Anzahl+=1
     return Anzahl
