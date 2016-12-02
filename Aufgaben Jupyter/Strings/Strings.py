@@ -1,10 +1,18 @@
 #encoding=utf-8
 #Erstellen Sie ein Programm, das einen String "rückwärts" ausgibt, also den letzten Buchstaben zuerst, dann den zweitletzten usw.
 def backwards(s):
+    backward = []
     for i in range(len(s)-1, -1, -1):
-        print(s[i])
+        backward.append(s[i])
+    return "".join(backward)
 s = "Hello world"
 print(backwards(s))
+
+def backwards2(s):
+    return s[::-1]
+
+print(backwards2(s))
+
 #Erweitern Sie das Programm so, dass geprüft wird, ob ein Wort ein Palindrom ist. Ein Palindrom ist ein Wort, das von vorne und von hinten gelesen gleich ist, z.B. "OTTO". Implementieren Sie dazu die Funktion is_palindrom(s), die True oder False zurücklifert, je nachdem, ob s ein Palindrom ist.
 def is_palindrom(s):
     reverse = ''
@@ -117,23 +125,17 @@ def get_word(index):
 
 
 def get_operator(s):
-    if s == "*":
-        return " mal "
-    elif s == "/":
-        return " durch "
-    elif s == "-":
-        return " minus "
-    elif s == "+":
-        return " plus "
+    operands = {"*": "mal", "/": "durch", "+": "plus", "-": "minus"}
+    return operands[s]
 
 
 def read_term(term):
     output = ''
     for t in term:
         if t.isdigit():
-            output += get_word(int(t))
+            output += get_word(int(t)) + " "
         else:
-            output += get_operator(t)
+            output += get_operator(t) + " "
     return output
 t = "1*2/3-5"
 print(read_term(t))

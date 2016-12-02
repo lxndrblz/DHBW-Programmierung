@@ -16,7 +16,7 @@ def read_data_from_file(file_path):
 
 
 def make_row(list):
-    data = OrderedDict();
+    data = OrderedDict()
 
     keys = ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin',
             'Embarked']
