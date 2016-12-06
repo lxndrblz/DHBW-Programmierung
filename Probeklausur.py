@@ -29,7 +29,7 @@ p = "regallager"
 
 def palindrom_wert(s):
     vokale = "aeiou"
-    anzahl_vokale = 0
+    anzahl_vokale = 0.0
     for c in s:
         if c in vokale:
             anzahl_vokale += 1
