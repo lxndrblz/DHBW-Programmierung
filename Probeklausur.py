@@ -27,14 +27,13 @@ Palindrom Wert
 '''
 p = "regallager"
 
-
 def palindrom_wert(s):
     vokale = "aeiou"
     anzahl_konsonant = 0.0
     for c in s:
         if c not in vokale:
             anzahl_konsonant += 1
-    return float(anzahl_konsonant / len(s))
+    return round((anzahl_konsonant / len(s)), 1)
 
 print(palindrom_wert(p))
 # Sollte 0.6 ergeben
@@ -55,3 +54,5 @@ def check_palindrom_satz(s):
     return bool(s == s[::-1])
 print(check_palindrom_satz(p))
 # Sollte True sein
+
+print(float(6.0 / 10))
