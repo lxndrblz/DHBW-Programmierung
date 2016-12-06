@@ -31,12 +31,13 @@ def palindrom_wert(s):
     vokale = "aeiou"
     anzahl_vokale = 0.0
     for c in s:
-        if c in vokale:
+        if c not in vokale:
             anzahl_vokale += 1
     return float(anzahl_vokale / len(s))
 
 print(palindrom_wert(p))
-# Sollte 0.4 ergeben
+# Sollte 0.6 ergeben
+
 
 '''
 Check palindrom Satz
@@ -46,7 +47,10 @@ p = "sei fein, nie fies"
 
 
 def check_palindrom_satz(s):
-    s = s.replace(" ", "").replace(",", "")
+    #Alle Satzzeichen entfernen
+    pattern = "!@#$%^&*()[]{};:,./<>?\|`~-=_+ "
+    for c in pattern:
+        s = s.replace(c, "")
     return bool(s == s[::-1])
 print(check_palindrom_satz(p))
 # Sollte True sein
