@@ -9,7 +9,6 @@ Alle Lösungen für die Jupyter Umgebung sind in Python 3.(x) realisiert.
 
 ## Struktur dieses Repositories
 ```
-.
 ├── Aufgaben\ Jupyter
 │   ├── Basic\ Functions
 │   ├── Loops
@@ -17,7 +16,9 @@ Alle Lösungen für die Jupyter Umgebung sind in Python 3.(x) realisiert.
 │   └── Wordcount
 ├── Aufgaben\ Moodle
 ├── InstantHacking
-└── Python\ Turtle
+├── Python\ Turtle
+├── Titanic
+└── ToDo\ Anwendung
 ```
 ## Anwendung Funktionen Jupyter
 Um die Lösungen in Jupyter auszuführen muss zunächst die eigentliche Funktion ausgeführt werden. Funktionen können mittels Shift+Enter ausgeführt werden.

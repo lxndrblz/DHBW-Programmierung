@@ -1,3 +1,4 @@
+#encoding=utf-8
 '''
 99 Bottles of Beer
 '''
@@ -29,11 +30,11 @@ p = "regallager"
 
 def palindrom_wert(s):
     vokale = "aeiou"
-    anzahl_vokale = 0.0
+    anzahl_konsonant = 0.0
     for c in s:
         if c not in vokale:
-            anzahl_vokale += 1
-    return float(anzahl_vokale / len(s))
+            anzahl_konsonant += 1
+    return float(anzahl_konsonant / len(s))
 
 print(palindrom_wert(p))
 # Sollte 0.6 ergeben
