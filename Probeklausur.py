@@ -54,5 +54,3 @@ def check_palindrom_satz(s):
     return bool(s == s[::-1])
 print(check_palindrom_satz(p))
 # Sollte True sein
-
-print(float(6.0 / 10))
