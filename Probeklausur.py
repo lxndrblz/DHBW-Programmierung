@@ -24,6 +24,9 @@ print(check_palindrom(p))
 
 '''
 Palindrom Wert
+
+Erweitern Sie Ihr Programm um die Funktion palindrom_wert, die eine float-Zahl zurückliefert
+
 '''
 p = "regallager"
 
@@ -33,7 +36,7 @@ def palindrom_wert(s):
     for c in s:
         if c not in vokale:
             anzahl_konsonant += 1
-    return round((anzahl_konsonant / len(s)), 1)
+    return float(anzahl_konsonant / len(s))
 
 print(palindrom_wert(p))
 # Sollte 0.6 ergeben
