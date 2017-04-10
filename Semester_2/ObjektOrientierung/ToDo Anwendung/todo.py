@@ -12,6 +12,7 @@ pathtonotes = "./data/todo.tasks"
 # Datei auslesen
 def read_data_from_file(path):
     f = open(path)
+    #Liste mit ToDoItems
     tasks = []
     for lines in f:
         t = lines.rstrip().split(";")
@@ -39,6 +40,7 @@ def print_data(data):
     print("NR\tTermin \t \t Aufgabe")
     print("_______________________________________")
     for i in range(len(data)):
+        #Index von eigentliche Daten in selber Zeile ausgeben
         print(i, " ", end="")
         data[i].display()
         print("_______________________________________")
@@ -52,17 +54,16 @@ def delete_data(id):
 
 def edit_task(id):
     data = read_data_from_file(pathtonotes)
-    taskname = str(input("Bitte neue Tätigkeit angeben: "))
-    taskdate = str(input("Bitte neues Datum angeben: "))
-    data[id] = ToDoItem.ToDoItem(taskdate,taskname)
+    data[id].set_taskname(str(input("Bitte neue Tätigkeit angeben: ")))
+    data[id].set_taskdate(str(input("Bitte neues Datum angeben: ")))
     write_data(pathtonotes, data, False)
 
 
 # Menüpunkt hinzufügen
 def write_new_task():
     temp = ToDoItem.ToDoItem("","")
-    temp.setTaskname(str(input("Bitte Tätigkeit angeben: ")))
-    temp.setTaskdate(str(input("Bitte Datum angeben: ")))
+    temp.set_taskname(str(input("Bitte Tätigkeit angeben: ")))
+    temp.set_taskdate(str(input("Bitte Datum angeben: ")))
 
     write_data(pathtonotes, [temp], True)
 
