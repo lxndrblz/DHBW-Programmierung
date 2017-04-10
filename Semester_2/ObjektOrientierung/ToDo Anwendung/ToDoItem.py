@@ -8,6 +8,6 @@ class ToDoItem:
     def setTaskdate(self,newtaskdate):
         self.__taskdate = newtaskdate
     def display(self):
-        return str(self.__taskdate + " "+self.__taskname)
+        print(self.__taskdate + " "+self.__taskname)
     def export(self):
         return str(self.__taskdate) + ";" + str(self.__taskname) + "\n"

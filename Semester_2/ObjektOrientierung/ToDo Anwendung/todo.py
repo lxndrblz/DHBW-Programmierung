@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # encoding=utf-8
 import ToDoItem
 '''
@@ -38,7 +39,8 @@ def print_data(data):
     print("NR\tTermin \t \t Aufgabe")
     print("_______________________________________")
     for i in range(len(data)):
-        print(str(i) + "\t" + data[i].display())
+        print(i, " ", end="")
+        data[i].display()
         print("_______________________________________")
 
 
@@ -50,29 +52,29 @@ def delete_data(id):
 
 def edit_task(id):
     data = read_data_from_file(pathtonotes)
-    taskname = str(raw_input("Bitte neue Tätigkeit angeben: "))
-    taskdate = str(raw_input("Bitte neues Datum angeben: "))
-    data[id] = ToDoItem.ToDoItem(taskname,taskdate)
+    taskname = str(input("Bitte neue Tätigkeit angeben: "))
+    taskdate = str(input("Bitte neues Datum angeben: "))
+    data[id] = ToDoItem.ToDoItem(taskdate,taskname)
     write_data(pathtonotes, data, False)
 
 
 # Menüpunkt hinzufügen
 def write_new_task():
     temp = ToDoItem.ToDoItem("","")
-    temp.setTaskname(str(raw_input("Bitte Tätigkeit angeben: ")))
-    temp.setTaskdate(str(raw_input("Bitte Datum angeben: ")))
+    temp.setTaskname(str(input("Bitte Tätigkeit angeben: ")))
+    temp.setTaskdate(str(input("Bitte Datum angeben: ")))
 
     write_data(pathtonotes, [temp], True)
 
 def edit_existing_task():
     print_data(read_data_from_file(pathtonotes))
-    taskedit = int(raw_input("Bitte ID angeben: "))
+    taskedit = int(input("Bitte ID angeben: "))
     edit_task(taskedit)
 
 # Menüpunkt löschen
 def delete_task():
     print_data(read_data_from_file(pathtonotes))
-    taskdel = int(raw_input("Bitte ID angeben: "))
+    taskdel = int(input("Bitte ID angeben: "))
     delete_data(taskdel)
 
 
@@ -81,7 +83,7 @@ def main_function():
     while True:
 
 
-        userinput = str(raw_input("Neu Notiz hinzufügen (n), Notiz löschen (l), Programm beenden (q), Notiz bearbeiten (b): "))
+        userinput = str(input("Neu Notiz hinzufügen (n), Notiz löschen (l), Programm beenden (q), Notiz bearbeiten (b): "))
         userinput = userinput.lower()
         if userinput == "q":
             exit()
