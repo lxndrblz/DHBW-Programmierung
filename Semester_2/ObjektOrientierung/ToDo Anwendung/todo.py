@@ -80,7 +80,7 @@ def delete_task():
 
 
 # Hauptfunktion
-def main_function():
+def display_main_menu():
     while True:
 
 
@@ -100,6 +100,5 @@ def main_function():
             print("Bitte korrekten Wert angeben!")
 
 
-
-
-main_function()
+if __name__ == '__main__':
+    display_main_menu()
