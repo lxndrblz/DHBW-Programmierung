@@ -1,6 +1,6 @@
 class ToDoItem:
-    def __init__(self,taskddate,taskname):
-        self.__taskdate = taskddate
+    def __init__(self,taskdate,taskname):
+        self.__taskdate = taskdate
         self.__taskname = taskname
 
     def set_taskname(self, newtaskname):
