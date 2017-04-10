@@ -10,4 +10,4 @@ class ToDoItem:
     def display(self):
         return str(self.__taskdate + " "+self.__taskname)
     def export(self):
-        return str(self.__taskname) + ";" + str(self.__taskdate) + "\n"
+        return str(self.__taskdate) + ";" + str(self.__taskname) + "\n"
