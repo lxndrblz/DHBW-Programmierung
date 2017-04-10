@@ -1,10 +1,8 @@
 # encoding=utf-8
-
-
-
+import ToDoItem
 '''
 
-Implementierung einer einfachen ToDo Liste mit Objektorientierung
+Implementierung einer einfachen ToDo Liste
 
 '''
 pathtonotes = "./data/todo.tasks"
@@ -15,7 +13,8 @@ def read_data_from_file(path):
     f = open(path)
     tasks = []
     for lines in f:
-        tasks.append(lines.rstrip().split(";"))
+        t = lines.rstrip().split(";")
+        tasks.append(ToDoItem.ToDoItem(t[0],t[1]))
     return tasks
 
 
@@ -29,19 +28,17 @@ def write_data(path, tasks, append):
         f = open(path, 'w')
     task = ""
     for t in tasks:
-        print(t)
-        task += t[0] + ";" + t[1] + "\n"
+        task += t.export()
     f.write(task)
     f.close()
 
 
 # Tabelle ausgeben
-
 def print_data(data):
     print("NR\tTermin \t \t Aufgabe")
     print("_______________________________________")
     for i in range(len(data)):
-        print(str(i) + "\t" + data[i][0] + "\t" + data[i][1])
+        print(str(i) + "\t" + data[i].display())
         print("_______________________________________")
 
 
@@ -55,17 +52,17 @@ def edit_task(id):
     data = read_data_from_file(pathtonotes)
     taskname = str(raw_input("Bitte neue Tätigkeit angeben: "))
     taskdate = str(raw_input("Bitte neues Datum angeben: "))
-    data[id] = [taskdate, taskname]
+    data[id] = ToDoItem.ToDoItem(taskname,taskdate)
     write_data(pathtonotes, data, False)
 
 
 # Menüpunkt hinzufügen
 def write_new_task():
-    taskname = str(raw_input("Bitte Tätigkeit angeben: "))
-    taskdate = str(raw_input("Bitte Datum angeben: "))
-    payload = [taskdate, taskname]
-    data = [payload]
-    write_data(pathtonotes, data, True)
+    temp = ToDoItem.ToDoItem("","")
+    temp.setTaskname(str(raw_input("Bitte Tätigkeit angeben: ")))
+    temp.setTaskdate(str(raw_input("Bitte Datum angeben: ")))
+
+    write_data(pathtonotes, [temp], True)
 
 def edit_existing_task():
     print_data(read_data_from_file(pathtonotes))
@@ -83,6 +80,7 @@ def delete_task():
 def main_function():
     while True:
 
+
         userinput = str(raw_input("Neu Notiz hinzufügen (n), Notiz löschen (l), Programm beenden (q), Notiz bearbeiten (b): "))
         userinput = userinput.lower()
         if userinput == "q":
@@ -95,8 +93,8 @@ def main_function():
             edit_existing_task()
         else:
             print("Bitte korrekten Wert angeben!")
-
         print_data(read_data_from_file(pathtonotes))
+
 
 
 main_function()
