@@ -84,7 +84,7 @@ def main_function():
     while True:
 
 
-        userinput = str(input("Neu Notiz hinzufügen (n), Notiz löschen (l), Programm beenden (q), Notiz bearbeiten (b): "))
+        userinput = str(input("Neu Notiz hinzufügen (n), Notiz löschen (l), Programm beenden (q), Notiz bearbeiten (b), Notiz anzeigen (a): "))
         userinput = userinput.lower()
         if userinput == "q":
             exit()
@@ -94,9 +94,11 @@ def main_function():
             delete_task()
         elif userinput == "b":
             edit_existing_task()
+        elif userinput == "a":
+            print_data(read_data_from_file(pathtonotes))
         else:
             print("Bitte korrekten Wert angeben!")
-        print_data(read_data_from_file(pathtonotes))
+
 
 
 
