@@ -28,12 +28,14 @@ class matches(men, women):
 
     def make_kids(self):
         if (len(self.__kids) < 3) and 18 < self.__men.get_age() < 50 and 18 < self.__women.get_age() < 50:
+            newkids = []
             for i in range(random.randint(1,4)):
                 if random.randint(0,2) == 0:
-                    self.__kids.append(men(names.get_first_name(gender='male'),0))
+                    newkids.append(men(names.get_first_name(gender='male'),0))
 
                 else:
-                    self.__kids.append(women(names.get_first_name(gender='female'),0))
-
+                    newkids.append(women(names.get_first_name(gender='female'),0))
+            self.__kids.append(newkids)
+            return newkids
     def get_kids(self):
             return self.__kids

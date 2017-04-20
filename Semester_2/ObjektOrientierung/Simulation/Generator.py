@@ -41,13 +41,13 @@ def match_maker(lmen, lwomen):
                 lmen.remove(man)
                 break
 
-    print("existing couples " + str(len(existing_couples)))
+    #print("existing couples " + str(len(existing_couples)))
     for lm in lmatches:
         if lm not in existing_couples:
             lmatches.remove(lm)
     for nc in new_couples:
         lmatches.append(nc)
-    print("new couples " + str(len(new_couples)))
+    #print("new couples " + str(len(new_couples)))
 
 
 def sort_by_gender(humans):
@@ -76,12 +76,13 @@ def simulate(humans):
         match_maker(men, women)
 
         for lm in lmatches:
-            lm.make_kids()
-            kids = lm.get_kids()
-            for kid in kids:
-                humans.append(kid)
+            #Create new kids, old ones are still stored in the Couples class
+            kids = lm.make_kids()
+            if kids is not None:
+                for kid in kids:
+                    humans.append(kid)
 
 
 
 
-simulate(create_humans(100))
+simulate(create_humans(1000))
