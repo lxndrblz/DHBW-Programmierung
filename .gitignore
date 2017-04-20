@@ -2,3 +2,4 @@
 .idea/
 
 Titanic/data/train.csv
+*.pyc
