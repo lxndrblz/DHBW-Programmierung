@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy
 lmatches = []
 
+amount_humans = 1000
 
 def create_humans(amount):
     humans = []
@@ -96,7 +97,7 @@ def calc_statistic(humans):
     lowest_age = min(ages)
     highest_age = max(ages)
     median = int((lowest_age+highest_age)/2)
-    return {'AverageAge':int(average_age),'Median':median, 'Kids':normal_round(average_amount_kids), 'HighestAge': int(highest_age)}
+    return {'AverageAge':int(average_age),'Median':median, 'Kids':normal_round(average_amount_kids), 'HighestAge': int(highest_age), 'Amount':len(humans)}
 
 
 
@@ -108,12 +109,13 @@ def normal_round(n):
     return math.ceil(n)
 
 def simulate(humans):
-    x = []
-    y2 = []
-    y = []
-    y3 = []
+    years_scale = []
+    average_age =[]
+    median_age = []
+    highest_age = []
+    amount = []
     #they age
-    for years in range(10):
+    for years in range(200):
         for h in humans:
             h.make_older()
             if h.die():
@@ -130,12 +132,29 @@ def simulate(humans):
                     humans.append(kid)
         stats = calc_statistic(humans)
         #plt.plot(years, stats['AverageAge'])
-        x.append(years+2017)
-        y.append(stats['AverageAge'])
-        y2.append(stats['Median'])
-        y3.append(stats['HighestAge'])
-    plt.plot(x, y, x, y2,x,y3)
-    plt.title("Simulation of a Population")
+        years_scale.append(years+2017)
+        average_age.append(stats['AverageAge'])
+        median_age.append(stats['Median'])
+        highest_age.append(stats['HighestAge'])
+        amount.append(stats['Amount'])
+
+
+    #Draw a nice looking graph
+    fig = plt.figure(figsize=(6, 4))
+    fig.canvas.set_window_title('Simulation of a Population')
+
+    sub1 = fig.add_subplot(221)
+    sub1.set_title('Average Age')
+    sub1.plot(years_scale, average_age)
+    sub2 = fig.add_subplot(222)
+    sub2.set_title('Median Age')
+    sub2.plot(years_scale, median_age)
+    sub3 = fig.add_subplot(223)
+    sub3.set_title("Highest Age")
+    sub3.plot(years_scale, highest_age)
+    sub4 = fig.add_subplot(224)
+    sub4.set_title("Population")
+    sub4.plot(years_scale, amount)
     plt.show()
 
-simulate(create_humans(10000))
+simulate(create_humans(amount_humans))
