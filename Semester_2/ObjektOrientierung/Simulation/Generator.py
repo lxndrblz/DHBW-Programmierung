@@ -6,7 +6,8 @@ from women import women
 from matches import matches
 import names
 import math
-
+import matplotlib.pyplot as plt
+import numpy
 lmatches = []
 
 
@@ -14,9 +15,9 @@ def create_humans(amount):
     humans = []
     for i in range(amount):
         if random.randint(0,2) == 0:
-            humans.append(men(names.get_first_name(gender='male'),random.randint(20,55)))
+            humans.append(men(names.get_first_name(gender='male'),random.randint(20,75)))
         else:
-            humans.append(women(names.get_first_name(gender='female'),random.randint(20,55), random.randint(0,2)))
+            humans.append(women(names.get_first_name(gender='female'),random.randint(20,75), random.randint(0,2)))
     return humans
 
 
@@ -64,13 +65,26 @@ def filter_by_gender(humans):
     return l_men, l_women
 
 
-def print_statistic(humans):
+def calc_statistic(humans):
     average_age = 0
     average_amount_kids = 0
     females = 0
+
+    ages = {}
+
+
+
     average_number_of_kids = 0
     for human in humans:
-        average_age += human.get_age()
+        age = human.get_age()
+        average_age += age
+        # Key already exists
+
+        if age in ages:
+            ages[age] += 1
+        else:
+            ages[age] = 1
+
         #Count amount of babies
         if type(human) == women:
             females +=1
@@ -78,7 +92,15 @@ def print_statistic(humans):
 
     average_amount_kids = average_amount_kids / females
     average_age = average_age/len(humans)
-    print("Average Age: "+str(int(average_age))+" Kids: " + str(normal_round(average_amount_kids)))
+
+    lowest_age = min(ages)
+    highest_age = max(ages)
+    median = int((lowest_age+highest_age)/2)
+    return {'AverageAge':int(average_age),'Median':median, 'Kids':normal_round(average_amount_kids), 'HighestAge': int(highest_age)}
+
+
+
+
 
 def normal_round(n):
     if n - math.floor(n) < 0.5:
@@ -86,9 +108,12 @@ def normal_round(n):
     return math.ceil(n)
 
 def simulate(humans):
+    x = []
+    y2 = []
+    y = []
+    y3 = []
     #they age
-    for years in range(20):
-        print("Simulating year: " +str(2017+years) + " Humans " + str(len(humans)))
+    for years in range(10):
         for h in humans:
             h.make_older()
             if h.die():
@@ -103,5 +128,14 @@ def simulate(humans):
             if kids is not None:
                 for kid in kids:
                     humans.append(kid)
-        print_statistic(humans)
-simulate(create_humans(2000))
+        stats = calc_statistic(humans)
+        #plt.plot(years, stats['AverageAge'])
+        x.append(years+2017)
+        y.append(stats['AverageAge'])
+        y2.append(stats['Median'])
+        y3.append(stats['HighestAge'])
+    plt.plot(x, y, x, y2,x,y3)
+    plt.title("Simulation of a Population")
+    plt.show()
+
+simulate(create_humans(10000))
