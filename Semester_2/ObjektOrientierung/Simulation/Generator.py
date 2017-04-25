@@ -50,8 +50,7 @@ def match_maker(lmen, lwomen):
             lmatches.remove(lm)
     for nc in new_couples:
         lmatches.append(nc)
-    print("Existing couples " + str(len(existing_couples))+" Total: " +str(len(lmatches)))
-
+    print("Exisiting couples: {:<6d} Total: {:<6d}".format(len(existing_couples), len(lmatches)))
 
 def filter_by_gender(humans):
     l_men = []
@@ -157,7 +156,7 @@ def simulate(humans):
         work_force_count.append(stats['WorkforceCount'])
 
     #Draw a nice looking graph
-    fig = plt.figure(figsize=(6, 4))
+    fig = plt.figure(figsize=(10, 6))
     fig.canvas.set_window_title('Simulation of a Population')
     sub1 = fig.add_subplot(221)
     sub1.set_title('Average Age')
