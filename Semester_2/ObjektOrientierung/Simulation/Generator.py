@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # encoding=utf-8
 import random
-from men import men
-from women import women
-from matches import matches
+from SimHuman.men import men
+from SimHuman.women import women
+from SimHuman.matches import matches
 import names
 import math
 import matplotlib.pyplot as plt
@@ -70,7 +70,9 @@ def calc_statistic(humans):
     average_age = 0
     average_amount_kids = 0
     females = 0
-
+    kids = 0
+    retired = 0
+    work_force = 0
     ages = {}
 
 
@@ -78,6 +80,13 @@ def calc_statistic(humans):
     average_number_of_kids = 0
     for human in humans:
         age = human.get_age()
+
+        if age < 18:
+            kids += 1
+        elif age < 65:
+            work_force += 1
+        else:
+            retired += 1
         average_age += age
         # Key already exists
 
@@ -85,6 +94,7 @@ def calc_statistic(humans):
             ages[age] += 1
         else:
             ages[age] = 1
+
 
         #Count amount of babies
         if type(human) == women:
@@ -97,7 +107,7 @@ def calc_statistic(humans):
     lowest_age = min(ages)
     highest_age = max(ages)
     median = int((lowest_age+highest_age)/2)
-    return {'AverageAge':int(average_age),'Median':median, 'Kids':normal_round(average_amount_kids), 'HighestAge': int(highest_age), 'Amount':len(humans)}
+    return {'AverageAge':int(average_age),'Median':median, 'Kids':normal_round(average_amount_kids), 'HighestAge': int(highest_age), 'Amount':len(humans), 'KidsCount': kids, 'RetiredCount':retired, 'WorkforceCount':work_force}
 
 
 
@@ -114,9 +124,14 @@ def simulate(humans):
     median_age = []
     highest_age = []
     amount = []
+    #Filter age groups
+    kids_count = []
+    retired_count = []
+    work_force_count = []
     #they age
-    for years in range(200):
+    for years in range(100):
         for h in humans:
+
             h.make_older()
             if h.die():
                 humans.remove(h)
@@ -137,24 +152,28 @@ def simulate(humans):
         median_age.append(stats['Median'])
         highest_age.append(stats['HighestAge'])
         amount.append(stats['Amount'])
-
+        kids_count.append(stats['KidsCount'])
+        retired_count.append(stats['RetiredCount'])
+        work_force_count.append(stats['WorkforceCount'])
 
     #Draw a nice looking graph
     fig = plt.figure(figsize=(6, 4))
     fig.canvas.set_window_title('Simulation of a Population')
-
     sub1 = fig.add_subplot(221)
     sub1.set_title('Average Age')
-    sub1.plot(years_scale, average_age)
+    sub1.plot(years_scale, average_age,label='Average Age')
     sub2 = fig.add_subplot(222)
     sub2.set_title('Median Age')
-    sub2.plot(years_scale, median_age)
+    sub2.plot(years_scale, median_age, label='Median Age')
     sub3 = fig.add_subplot(223)
     sub3.set_title("Highest Age")
-    sub3.plot(years_scale, highest_age)
+    sub3.plot(years_scale, highest_age, label='Highest Age')
     sub4 = fig.add_subplot(224)
-    sub4.set_title("Population")
-    sub4.plot(years_scale, amount)
+    sub4.plot(years_scale, amount, label='Population')
+    sub4.plot(years_scale, kids_count,label='Kids')
+    sub4.plot(years_scale, retired_count,label='Retired')
+    sub4.plot(years_scale, work_force_count,label='Working')
+    plt.legend(loc='best')
     plt.show()
 
 simulate(create_humans(amount_humans))

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # encoding=utf-8
-from human import human
+from SimHuman.human import human
 class women(human):
 
     def __init__(self, name, alter , babys):

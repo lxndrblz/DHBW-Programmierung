@@ -1,7 +1,7 @@
 import names
 import random
-from men import men
-from women import women
+from SimHuman.men import men
+from SimHuman.women import women
 
 class matches(men, women):
     def __init__(self, match_men, match_women):
