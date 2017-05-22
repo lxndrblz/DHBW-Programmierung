@@ -1,15 +1,5 @@
-
-<html>
-<head><title>BMI-Rechner</title>
-  <meta charset="UTF-8">
-  <!--
-
-  Set some smartphone specific parameters
-
-  -->
-<body>
+{% extends "layout.html" %}
+{% block main %}
 <h2>Ergebnis: {{ergebnis}}</h2>
- <img src="{{src}}" size="500">
-</form>
-</body>
-</html>
+<img src="{{src}}" size="500">
+{% endblock %}

@@ -1,0 +1,77 @@
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+img{
+width:100%;
+}
+
+.own-header{
+background-color: rgb(36, 41, 46);
+height: 64px;
+color: #FFFFFF;
+}
+
+.own-ribbon {
+  width: 100%;
+  height: 40vh;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.own-main {
+  margin-top: -35vh;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.own-header .mdl-layout__header-row {
+  padding-left: 40px;
+}
+
+.own-container {
+  max-width: 1600px;
+  width: calc(100% - 16px);
+  margin: 0 auto;
+  height: 90%;
+}
+
+.own-content {
+  border-radius: 2px;
+  padding: 80px 56px;
+  margin-bottom: 80px;
+}
+
+.own-layout.is-small-screen .own-content {
+  padding: 40px 28px;
+}
+
+.own-content h3 {
+  margin-top: 48px;
+}
+
+.own-content p, li {
+  text-align: left;
+}
+
+.own-footer {
+  padding-left: 40px;
+}
+
+
+.own-footer .mdl-mini-footer--link-list a {
+  font-size: 13px;
+}
+
+#own-content-error {
+    text-align: center;
+
+#own-content-error p {
+    text-align: center;
+}
+#own-content-error h1 {
+    font-size: 500%;
+}
