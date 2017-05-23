@@ -15,7 +15,7 @@
     {% for note in notes %}
     <tr class="file_arq">
       <form action="/process">
-        <td><input value="{{loop.index}}" name="id" disabled></td>
+        <td><input value="{{loop.index}}" name="id" readonly></td>
       <td><input value="{{ note.getTitle()}}" name="title"></td>
       <td><input value="{{ note.getDate()}}" name="date" type="date"></td>
       <td>
