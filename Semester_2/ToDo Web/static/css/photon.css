@@ -30,6 +30,11 @@ a:hover {
 abbr[title] {
   border-bottom: 1px dotted;
 }
+.new{
+width: 50%;
+margin: 0 auto;
+margin-top: 2em;
+}
 input{
 width:100%;
 border:none;
