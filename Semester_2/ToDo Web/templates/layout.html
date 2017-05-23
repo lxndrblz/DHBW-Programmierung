@@ -12,6 +12,16 @@
       <!-- .toolbar-header sits at the top of your app -->
       <header class="toolbar toolbar-header">
         <h1 class="title">AwesomeNotes</h1>
+        <div class="toolbar-actions">
+          <div class="btn-group pull-right">
+            <a class="btn btn-default icon icon-plus" href="{{ url_for('button_add_new') }}">
+            Add New Note
+          </a>
+          <a class="btn btn-default icon icon-tools" href="{{ url_for('button_edit') }}">
+            Edit Notes
+          </a>
+          </div>
+        </div>
       </header>
 
       <!-- Your app's content goes inside .window-content -->
@@ -35,12 +45,7 @@
       </div>
       <footer class="toolbar toolbar-footer">
         <div class="toolbar-actions">
-          <a class="btn btn-default" href="{{ url_for('button_add_new') }}">
-            Add New Note
-          </a>
-          <a class="btn btn-default" href="{{ url_for('button_edit') }}">
-            Edit Notes
-          </a>
+
         </div>
       </footer>
     </div>

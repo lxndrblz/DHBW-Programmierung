@@ -32,6 +32,8 @@ abbr[title] {
 }
 input{
 width:100%;
+border:none;
+background:transparent;
 }
 
 b,
