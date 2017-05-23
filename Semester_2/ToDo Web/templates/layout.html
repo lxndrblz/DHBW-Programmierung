@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>AwesomeNotes</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/photon.css')}}">
-  </head>
-  <body>
-    <div class="window">
+</head>
+<body>
+<div class="window">
 
-      <!-- .toolbar-header sits at the top of your app -->
-      <header class="toolbar toolbar-header">
+    <!-- .toolbar-header sits at the top of your app -->
+    <header class="toolbar toolbar-header">
         <h1 class="title">AwesomeNotes</h1>
         <div class="toolbar-actions">
-          <div class="btn-group pull-right">
-            <a class="btn btn-default icon icon-plus" href="{{ url_for('button_add_new') }}">
-            Add New Note
-          </a>
-          <a class="btn btn-default icon icon-tools" href="{{ url_for('button_edit') }}">
-            Edit Notes
-          </a>
-          </div>
+            <div class="btn-group pull-right">
+                <a class="btn btn-default icon icon-plus" href="{{ url_for('button_add_new') }}">
+                    Add New Note
+                </a>
+                <a class="btn btn-default icon icon-tools" href="{{ url_for('button_edit') }}">
+                    Edit Notes
+                </a>
+            </div>
         </div>
-      </header>
+    </header>
 
-      <!-- Your app's content goes inside .window-content -->
-      <div class="window-content">
+    <!-- Your app's content goes inside .window-content -->
+    <div class="window-content">
         <div class="pane-group">
-          <div class="pane pane-sm sidebar">
-            <nav class="nav-group">
-              <h5 class="nav-group-title">Categories</h5>
-              <span class="nav-group-item">
-                <span class="icon icon-home" ></span>
+            <div class="pane pane-sm sidebar">
+                <nav class="nav-group">
+                    <h5 class="nav-group-title">Categories</h5>
+                    <span class="nav-group-item">
+                <span class="icon icon-home"></span>
                 <a href="{{ url_for('list_notes') }}"> Uncategorized</a>
               </span>
-            </nav>
-          </div>
+                </nav>
+            </div>
 
-          <div class="pane">
-            {% block main %}{% endblock %}
-            
-          </div>
+            <div class="pane">
+                {% block main %}{% endblock %}
+
+            </div>
         </div>
-      </div>
-      <footer class="toolbar toolbar-footer">
+    </div>
+    <footer class="toolbar toolbar-footer">
         <div class="toolbar-actions">
 
         </div>
-      </footer>
-    </div>
-    
-  </body>
+    </footer>
+</div>
+
+</body>
 </html>
