@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block main %}
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for note in notes %}
+    <tr class="file_arq">
+      <td>{{ note.getTitle()}}</td>
+      <td>{{ note.getDate()}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
