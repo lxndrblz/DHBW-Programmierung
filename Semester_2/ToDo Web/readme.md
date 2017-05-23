@@ -1,2 +1,2 @@
 # AwesomeNotes
-![](/docs/img/screenshot.png)
+![](./docs/img/screenshot.png)
