@@ -16,13 +16,17 @@
     <tr class="file_arq">
         <form action="/process" method="post">
             <td>{{ loop.index}}</td>
-            <td><input value="{{ note.getTitle()}}" name="title"></td>
-            <td><input value="{{ note.getDate()}}" name="date" type="date"></td>
+            <td><input value="{{ note.getTitle()}}" name="title" {% if note.isForeign() %}readonly{% endif %}></td>
+            <td><input value="{{ note.getDate()}}" name="date" type="date" {% if note.isForeign() %}readonly{% endif %}></td>
             <td>
-                <input type="submit" class="btn btn-default pull-right" value="save" name="submit">
+                {% if not note.isForeign() %}
+                <input type="submit" class="btn btn-default pull-right" value="save" name="submit" >
+                {% endif %}
             </td>
             <td>
+                {% if not note.isForeign() %}
                 <input type="submit" class="btn btn-negative pull-right" value="delete" name="submit">
+                {% endif %}
             </td>
             <input value="{{ note.getUUID()}}" name="id" type="hidden">
         </form>

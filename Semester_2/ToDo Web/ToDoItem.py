@@ -1,8 +1,9 @@
 class ToDoItem:
-    def __init__(self, taskdate, taskname, id):
+    def __init__(self, taskdate, taskname, id, foreign):
         self.__taskdate = taskdate
         self.__taskname = taskname
         self.__id = id
+        self.__foreign = foreign
 
     def set_taskname(self, newtaskname):
         self.__taskname = newtaskname
@@ -21,6 +22,9 @@ class ToDoItem:
 
     def getDate(self):
         return self.__taskdate
+
+    def isForeign(self):
+        return self.__foreign
 
     def export(self):
         return str(self.__taskdate) + ";" + str(self.__taskname) + ";" + str(self.__id) + "\n"

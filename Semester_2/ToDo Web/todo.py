@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # encoding=utf-8
 import ToDoItem
-
+import urllib.request
 '''
 
 Implementierung einer einfachen ToDo Liste
 
 '''
 pathtonotes = "./data/todo.tasks"
-
+foreigntonotes = "http://www.cafevier.de/todo.txt"
 
 # Datei auslesen
 def read_data_from_file():
@@ -17,7 +17,12 @@ def read_data_from_file():
     tasks = []
     for lines in f:
         t = lines.rstrip().split(";")
-        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2]))
+        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], False))
+    # Lade Notizen von fremder URL
+    f = urllib.request.urlopen(foreigntonotes)
+    for lines in f:
+        t = str(lines, 'utf-8').rstrip().split(";")
+        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
     return tasks
 
 

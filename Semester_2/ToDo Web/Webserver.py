@@ -20,7 +20,7 @@ def process():
     else:
         title = request.form.get('title')
         date = request.form.get('date')
-        todo.edit_task(id, title, date)
+        todo.edit_task(id, title, date, False)
     notes = todo.read_data_from_file()
     return render_template("edit.html", notes=notes)
 
@@ -35,7 +35,7 @@ def list_notes():
 def add_note():
     taskname = request.form.get('name')
     taskdate = request.form.get('date')
-    todo.new_task(taskdate,taskname, uuid.uuid4())
+    todo.new_task(taskdate,taskname, uuid.uuid4(), False)
     return redirect("/list", code=302)
 
 
