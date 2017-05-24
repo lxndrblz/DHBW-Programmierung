@@ -1,5 +1,6 @@
 import todo
 import uuid
+import time
 from flask import Flask, request, render_template, redirect
 app = Flask("ToDoWeb")
 
@@ -7,7 +8,7 @@ app = Flask("ToDoWeb")
 # Standard Webseite
 @app.route("/")
 def index():
-    return render_template("list.html", notes=todo.read_data_from_file())
+    return render_template("list.html", notes=sort_notes(todo.read_data_from_file()))
 
 
 # Route zur Verarbeitung der Form in edit.html
@@ -24,9 +25,23 @@ def process():
     return render_template("edit.html", notes=notes)
 
 
+def sort_notes(notes):
+
+    sorted_notes = notes
+    for i in range(2, len(notes)):
+        sortin = notes[i]
+        j = i
+        while j >1 and time.strptime(notes[j-1].getDate(), "%m/%d/%Y") > time.strptime(sortin.getDate(), "%m/%d/%Y"):
+            notes[j] = notes[j-1]
+            j = j-1
+        sorted_notes[j] = sortin
+    return sorted_notes
+
+
+
 @app.route("/list")
 def list_notes():
-    return render_template("list.html", notes=todo.read_data_from_file())
+    return render_template("list.html", notes=sort_notes(todo.read_data_from_file()))
 
 
 # Neuen Eintrag hinzufügen
@@ -45,8 +60,7 @@ def button_add_new():
 
 @app.route('/button_edit')
 def button_edit():
-    notes = todo.read_data_from_file()
-    return render_template("edit.html", notes=notes)
+    return render_template("edit.html", notes=sort_notes(todo.read_data_from_file()))
 
 if __name__ == '__main__':
     app.run(debug=True)
