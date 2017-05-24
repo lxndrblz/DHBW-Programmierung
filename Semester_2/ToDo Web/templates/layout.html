@@ -13,7 +13,11 @@
     <header class="toolbar toolbar-header">
         <h1 class="title">AwesomeNotes</h1>
         <div class="toolbar-actions">
+
             <div class="btn-group pull-right">
+                <a class="btn btn-default icon icon-search" href="{{ url_for('button_search') }}">
+                    Search
+                </a>
                 <a class="btn btn-default icon icon-plus" href="{{ url_for('button_add_new') }}">
                     Add New Note
                 </a>

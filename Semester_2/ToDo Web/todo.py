@@ -11,19 +11,28 @@ pathtonotes = "./data/todo.tasks"
 foreigntonotes = "http://www.cafevier.de/todo.txt"
 
 # Datei auslesen
-def read_data_from_file():
+def read_data_from_file(filter=None):
     f = open(pathtonotes)
     # Liste mit ToDoItems
     tasks = []
     for lines in f:
         t = lines.rstrip().split(";")
-        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], False))
+        if len(t) == 3:
+            if filter is not None:
+                if filter in t[1] or filter in t[0]:
+                    tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], False))
+            else:
+                tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], False))
     # Lade Notizen von fremder URL
     f = urllib.request.urlopen(foreigntonotes)
     for lines in f:
         t = str(lines, 'utf-8').rstrip().split(";")
         if len(t) == 3:
-            tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
+            if filter is not None:
+                if filter in t[1] or filter in t[0]:
+                    tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
+            else:
+                tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
     return tasks
 
 

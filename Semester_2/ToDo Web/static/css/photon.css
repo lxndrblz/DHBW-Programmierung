@@ -35,7 +35,17 @@ width: 50%;
 margin: 0 auto;
 margin-top: 2em;
 }
+.search{
+padding: 5px;
+}
+.searchbox{
+width:100%;
+}
 input{
+width: 100%;
+}
+
+.inputnone{
 width:100%;
 border:none;
 background:transparent;
