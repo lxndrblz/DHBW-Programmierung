@@ -7,3 +7,12 @@ Im Terminal zum Code navigieren und dann folgenden Befehl ausführen:
 python3 Webserver.py
 ```
 Danach sollte im Browser unter folgendem [Link](http://localhost:5000/) die ToDo Anwendung erscheinen.
+
+## Funktionsweise:
+```
+Controller          View
+    |                |
+    |                |
+    v                v
+  list      templates/list.html
+```
