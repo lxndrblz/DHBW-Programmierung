@@ -17,7 +17,7 @@ def read_data_from_file():
     tasks = []
     for lines in f:
         t = lines.rstrip().split(";")
-        tasks.append(ToDoItem.ToDoItem(t[0], t[1]))
+        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2]))
     return tasks
 
 
@@ -38,21 +38,26 @@ def write_data(path, tasks, append):
 
 # Datenreihe löschen
 def delete_task(id):
+    list_index = 0
+    for item in read_data_from_file():
+        if(item.getUUID()==id):
+            break
+        list_index += 1
     data = read_data_from_file()
-    data.remove(data[id])
+    data.remove(data[list_index])
     write_data(pathtonotes, data, False)
 
 # Werte eines Eintrags anpassen
 def edit_task(id, newtitle, newdate):
     data = read_data_from_file()
-    data[id].set_taskname(str(newtitle))
-    data[id].set_taskdate(str(newdate))
+    for item in data:
+        if(item.getUUID()==id):
+            item.set_taskname(str(newtitle))
+            item.set_taskdate(str(newdate))
     write_data(pathtonotes, data, False)
 
 
 # Menüpunkt hinzufügen
-def new_task(title, date):
-    temp = ToDoItem.ToDoItem("", "")
-    temp.set_taskname(str(title))
-    temp.set_taskdate(str(date))
+def new_task(title, date, id):
+    temp = ToDoItem.ToDoItem(title, date, id)
     write_data(pathtonotes, [temp], True)

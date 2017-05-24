@@ -1,5 +1,6 @@
 import todo
-from flask import Flask, request, render_template
+import uuid
+from flask import Flask, request, render_template, redirect
 
 app = Flask("ToDoWeb")
 
@@ -11,15 +12,15 @@ def index():
 
 
 # Route zur Verarbeitung der Form in edit.html
-@app.route("/process")
+@app.route("/process", methods=['POST'])
 def process():
-    id = int(request.args.get('id'))
-    if request.args.get('submit') == 'delete':
-        todo.delete_task(id - 1)
+    id = request.form.get('id')
+    if request.form.get('submit') == 'delete':
+        todo.delete_task(id)
     else:
-        title = request.args.get('title')
-        date = request.args.get('date')
-        todo.edit_task(id - 1, title, date)
+        title = request.form.get('title')
+        date = request.form.get('date')
+        todo.edit_task(id, title, date)
     notes = todo.read_data_from_file()
     return render_template("edit.html", notes=notes)
 
@@ -30,12 +31,12 @@ def list_notes():
 
 
 # Neuen Eintrag hinzufügen
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def add_note():
-    taskname = request.args.get('name')
-    taskdate = request.args.get('date')
-    todo.new_task(taskname, taskdate)
-    return render_template("list.html", notes=todo.read_data_from_file())
+    taskname = request.form.get('name')
+    taskdate = request.form.get('date')
+    todo.new_task(taskdate,taskname, uuid.uuid4())
+    return redirect("/list", code=302)
 
 
 @app.route('/button_add_new')
