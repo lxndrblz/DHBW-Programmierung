@@ -17,7 +17,7 @@
         <form action="/process" method="post">
             <td>{{ loop.index}}</td>
             <td><input value="{{ note.getTitle()}}" name="title" {% if note.isForeign() %}readonly{% endif %}></td>
-            <td><input value="{{ note.getDate()}}" name="date" type="date" {% if note.isForeign() %}readonly{% endif %}></td>
+            <td><input value="{{ note.getDate()}}" name="date"  {% if note.isForeign() %}readonly{% endif %}></td>
             <td>
                 {% if not note.isForeign() %}
                 <input type="submit" class="btn btn-default pull-right" value="save" name="submit" >
