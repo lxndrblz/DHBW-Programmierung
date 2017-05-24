@@ -22,7 +22,8 @@ def read_data_from_file():
     f = urllib.request.urlopen(foreigntonotes)
     for lines in f:
         t = str(lines, 'utf-8').rstrip().split(";")
-        tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
+        if len(t) == 3:
+            tasks.append(ToDoItem.ToDoItem(t[0], t[1], t[2], True))
     return tasks
 
 
@@ -36,7 +37,8 @@ def write_data(path, tasks, append):
         f = open(path, 'w')
     task = ""
     for t in tasks:
-        task += t.export()
+        if not t.isForeign():
+            task += t.export()
     f.write(task)
     f.close()
 
@@ -64,5 +66,5 @@ def edit_task(id, newtitle, newdate):
 
 # Menüpunkt hinzufügen
 def new_task(title, date, id):
-    temp = ToDoItem.ToDoItem(title, date, id)
+    temp = ToDoItem.ToDoItem(title, date, id, False)
     write_data(pathtonotes, [temp], True)

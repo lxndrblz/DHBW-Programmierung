@@ -1,7 +1,6 @@
 import todo
 import uuid
 from flask import Flask, request, render_template, redirect
-
 app = Flask("ToDoWeb")
 
 
@@ -20,7 +19,7 @@ def process():
     else:
         title = request.form.get('title')
         date = request.form.get('date')
-        todo.edit_task(id, title, date, False)
+        todo.edit_task(id, title, date)
     notes = todo.read_data_from_file()
     return render_template("edit.html", notes=notes)
 
@@ -35,7 +34,7 @@ def list_notes():
 def add_note():
     taskname = request.form.get('name')
     taskdate = request.form.get('date')
-    todo.new_task(taskdate,taskname, uuid.uuid4(), False)
+    todo.new_task(taskdate,taskname, uuid.uuid4())
     return redirect("/list", code=302)
 
 
@@ -48,7 +47,6 @@ def button_add_new():
 def button_edit():
     notes = todo.read_data_from_file()
     return render_template("edit.html", notes=notes)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
