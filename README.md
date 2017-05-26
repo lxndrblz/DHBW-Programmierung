@@ -61,6 +61,6 @@ Es sollte folgende Ausgabe erscheinen:
 `9` :tada:
  
 ## Fehlende Imports beheben
-Manche Lösungen nutzen Funktion und Module, die nicht Teil der Standardinstallation sind. Alle hier verwendeten Module können mit pip nachinstalliert werden. Nachfolgender Befehl installiert das Modul _names_, das z.B. bei der [https://github.com/lxndrblz/DHBW-Programmierung/tree/master/Semester_2/ObjektOrientierung/Simulation](https://github.com/lxndrblz/DHBW-Programmierung/tree/master/Semester_2/ObjektOrientierung/Simulation) verwendet wird:
+Manche Lösungen nutzen Funktionen und Module, die nicht Teil der Standardinstallation sind. Alle hier verwendeten Module können mit pip nachinstalliert werden. Nachfolgender Befehl installiert das Modul _names_, das z.B. bei der [https://github.com/lxndrblz/DHBW-Programmierung/tree/master/Semester_2/ObjektOrientierung/Simulation](https://github.com/lxndrblz/DHBW-Programmierung/tree/master/Semester_2/ObjektOrientierung/Simulation) verwendet wird:
 
 `pip3 install names`
