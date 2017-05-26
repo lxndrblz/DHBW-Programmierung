@@ -29,8 +29,19 @@ Alle Lösungen für die Jupyter Umgebung und Objektorientierung sind in Python 3
     │   ├── Simulation
     │   └── ToDo\ Anwendung
     │       └── data
-    └── ToDo\ Anwendung
-        └── data
+    ├── ToDo\ Anwendung
+    │       └── data
+    ├── ToDo\ Web
+    │   ├── data
+    │   ├── docs
+    │   │   └── img
+    │   ├── static
+    │   │   ├── css
+    │   │   └── fonts
+    │   ├── templates
+    └── Webserver
+        ├── static
+        └── templates
 ```
 ## Anwendung Funktionen Jupyter
 Um die Lösungen in Jupyter auszuführen muss zunächst die eigentliche Funktion ausgeführt werden. Funktionen können mittels Shift+Enter ausgeführt werden.
