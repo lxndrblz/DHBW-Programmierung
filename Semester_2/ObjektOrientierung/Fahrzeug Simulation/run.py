@@ -30,15 +30,15 @@ autoliste = [fahrzeug1, fahrzeug2, fahrzeug3, fahrzeug4]
 
 gewinnerliste = autorennen(autoliste)
 
-plt.axis([1, len(gewinnerliste), 0, 10])
-plt.xlabel('Fahrzeug #')
+plt.axis([0, len(gewinnerliste) +1, 0, 10])
+plt.xlabel('Platz')
 plt.ylabel('PS pro KG')
 plt.title('Autosimulation')
 plt.ion()
 
-for i in gewinnerliste:
+for index, i in enumerate(reversed(gewinnerliste)):
     y = float(i.leergewicht / i.leistung)
-    plt.scatter(i.fahrzeugnummer, y)
+    plt.scatter(index + 1, y)
     plt.pause(0.05)
 
 while True:
