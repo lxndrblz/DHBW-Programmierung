@@ -24,7 +24,7 @@ def autorennen(autolist):
 fahrzeug1 = pkw(1, 1000, 2000, 200, 200, 2)
 fahrzeug2 = pkw(2, 1000, 2000, 200, 1990, 2)
 fahrzeug3 = pkw(3, 1000, 2000, 200, 180, 2)
-fahrzeug4 = pkw(4, 1000, 2000, 200, 190, 2)
+fahrzeug4 = pkw(4, 1000, 2000, 200, 1700, 2)
 
 autoliste = [fahrzeug1, fahrzeug2, fahrzeug3, fahrzeug4]
 
@@ -38,7 +38,7 @@ plt.ion()
 
 for index, i in enumerate(reversed(gewinnerliste)):
     y = float(i.leergewicht / i.leistung)
-    plt.scatter(index + 1, y)
+    plt.annotate(i.fahrzeugnummer, xy=(index + 1, y), bbox=dict(boxstyle='circle,pad=0.5', fc='red', alpha=0.5))
     plt.pause(0.05)
 
 while True:
