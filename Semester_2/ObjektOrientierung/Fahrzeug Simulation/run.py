@@ -38,9 +38,11 @@ plt.ion()
 
 for index, i in enumerate(reversed(gewinnerliste)):
     y = float(i.leergewicht / i.leistung)
-    plt.annotate(i.fahrzeugnummer, xy=(index + 1, y), bbox=dict(boxstyle='circle,pad=0.5', fc='red', alpha=0.5))
+    plt.annotate(i.fahrzeugnummer, xy=(index + 1, y), bbox=dict(boxstyle='circle,pad=0.5', fc='red'))
     plt.pause(0.05)
 
+# Bei Jupyter untenstehende Schleife entfernen!
+# Auf dem Desktop ist diese jedoch erforderlich
 while True:
     plt.pause(0.05)
 
