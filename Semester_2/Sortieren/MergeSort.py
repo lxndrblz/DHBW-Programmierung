@@ -22,7 +22,6 @@ def merge_sort(l1, l2):
                 counter_l1 += 1
                 l_sorted.append(l2[counter_l2])
                 counter_l2 += 1
-                counter_l1 += 1
 
     return l_sorted
 
